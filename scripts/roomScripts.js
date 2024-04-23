@@ -105,12 +105,19 @@ function renderCards(data) {
         text_4.className = 'card-text';
         text_4.innerHTML = `Kích Thước: <span style="font-weight:bold">${item.DienTich} m²(bao gồm cả ban công)</span> |`
 
+        const redirectLinks = document.createElement('a');
+        redirectLinks.href = `/redirect/room/${item.MaPhong}.html`;
+        redirectLinks.className = 'btn btn-secondary'
+        redirectLinks.style = 'float: right; text-decoration: none';
+        redirectLinks.innerText = 'Xem chi tiết >';
+
         cardBody.appendChild(title_1);
         cardBody.appendChild(title_2);
         cardBody.appendChild(text_1);
         cardBody.appendChild(text_2);
         cardBody.appendChild(text_3);
         cardBody.appendChild(text_4);
+        cardBody.appendChild(redirectLinks);
 
         cardDiv.appendChild(carouselDiv);
         cardDiv.appendChild(cardBody);

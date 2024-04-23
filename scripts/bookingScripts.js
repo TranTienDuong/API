@@ -176,6 +176,16 @@ function filterDatetimepickr(roomNumber, data) {
 
     const roomBookings = data.filter((item) => item.SoPhong === roomNumber);
 
+    if(roomBookings.length === 0) {
+        console.log(`No bookings found for rooms number: ${roomNumber}` );
+    }
+    const firstRoomBooking = roomBookings[0];
+    let roomPrice = parseFloat(firstRoomBooking.GiaPhong);
+    
+    if(isNaN(roomPrice)) {
+        console.error(`Invalid room price for room: ${roomNumber}`);
+    }
+
     const disabledDates = roomBookings
     .map((item) => {
         const from = new Date(item.NgayNhanPhong);
